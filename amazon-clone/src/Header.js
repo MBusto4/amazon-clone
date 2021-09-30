@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.css'
 
+
 function header() {
     return (
         <div className='header'>
@@ -10,8 +11,8 @@ function header() {
             <div className='header_search'>
                 <input
                     className='header_search-field'
-                    type='text'
-                ></input>
+                    type='text'>
+                </input>
             </div>
             <div
                 className='header_nav'>
