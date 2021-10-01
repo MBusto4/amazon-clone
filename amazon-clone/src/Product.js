@@ -11,7 +11,15 @@ function Product({ title, image, price, rating }) {
                     <strong>{price}</strong>
                 </p>
                 <div className="product__rating">
-                    <p>{rating}</p>
+                    {/* we populate an array with the rating and display how many stars that product has through props*/}
+                    {
+                        Array(rating)
+                            .fill()
+                            .map((_, i) => (
+                                <p>🌟</p>
+
+                            ))
+                    }
                 </div>
             </div>
             <img src={image} alt="" />
