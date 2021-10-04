@@ -3,6 +3,7 @@ import './App.css';
 import './Header';
 import Header from './Header'
 import Home from './Home';
+import Checkout from './Checkout';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 
@@ -13,14 +14,15 @@ function App() {
 
     <Router>
       <div className="App">
+        <Header />
         <Switch>
 
           <Route path='/checkout'>
             <h1> I AM THE CHECKOUT PAGE</h1>
+            <Checkout />
           </Route>
-          {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE*/}
+          {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE has to be at the bottom*/}
           <Route path='/'>
-            <Header />
             <Home />
           </Route>
 
