@@ -1,21 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 // import SearchIcon from '@mui/icons-material/Search';
 // import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { BsFillCartCheckFill, BsSearch } from "react-icons/bs";
 
 
 function header() {
     return (
         <div className='header'>
-            <img src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
-                className='header__logo'
-                alt='' />
+            <Link to='/'>
+                <img src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
+                    className='header__logo'
+                    alt='' />
+            </Link>
             <div className='header__search'>
                 <input
                     className='header__searchField'
                     type='text'>
-                    {/* <SearchIcon className="search__icon" /> */}
                 </input>
+                <BsSearch className='header__icon' />
             </div>
             <div
                 className='header__nav'>
@@ -47,7 +51,9 @@ function header() {
                 </div>
 
                 <div className='header__optionCart'>
-                    {/* <ShoppingBasketIcon /> */}
+                    <Link to='/checkout'>
+                        <BsFillCartCheckFill />
+                    </Link>
                     <span className="header__option__lineTwo header__cartCount">0</span>
                 </div>
             </div>

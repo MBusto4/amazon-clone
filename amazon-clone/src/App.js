@@ -18,7 +18,6 @@ function App() {
         <Switch>
 
           <Route path='/checkout'>
-            <h1> I AM THE CHECKOUT PAGE</h1>
             <Checkout />
           </Route>
           {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE has to be at the bottom*/}
