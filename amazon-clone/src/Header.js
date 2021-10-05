@@ -4,9 +4,20 @@ import './Header.css'
 // import SearchIcon from '@mui/icons-material/Search';
 // import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { BsFillCartCheckFill, BsSearch } from "react-icons/bs";
+import { useStateValue } from "./StateProvider"
 
 
-function header() {
+function Header() {
+
+    /*
+        this represent our state value from our StateProvider
+        we can further deconstruct the state value to get a specific state value 
+       const [state, dispatch] = useStateValue();*/
+
+
+    const [{ cart }, dispatch] = useStateValue();
+
+
     return (
         <div className='header'>
             <Link to='/'>
@@ -54,7 +65,7 @@ function header() {
                     <Link to='/checkout'>
                         <BsFillCartCheckFill />
                     </Link>
-                    <span className="header__option__lineTwo header__cartCount">0</span>
+                    <span className="header__option__lineTwo header__cartCount">{cart?.length}</span>
                 </div>
             </div>
 
@@ -63,4 +74,4 @@ function header() {
     )
 }
 
-export default header
+export default Header

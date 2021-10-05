@@ -4,10 +4,10 @@ import { useStateValue } from "./StateProvider"
 
 function Product({ id, title, image, price, rating }) {
 
-    const [state, dispatch] = useStateValue();
-
+    const [{ cart }, dispatch] = useStateValue();
+    console.log(cart)
     const addToCart = () => {
-        //dispatch the action of adding an item to the cart
+        //dispatch the action of adding an item to the cart pushing into the data layer.
 
         dispatch({
             type: 'ADD_TO_CART',
