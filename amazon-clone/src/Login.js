@@ -28,7 +28,7 @@ function Login() {
                     see our Privacy Notice, our Cookies Notice and our Internet-Based Ads Notice.
                 </p>
                 <button
-                    className='login__registerInButton'
+                    className='login__registerButton'
                 >Create an Amazon-Clone Account</button>
             </div>
         </div>
