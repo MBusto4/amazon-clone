@@ -15,7 +15,6 @@ function Checkout() {
                     <h2 className="checkout__title">
                         Your Shopping Cart
                     </h2>
-
                     {
                         cart.map(item => (
                             <CartItem
