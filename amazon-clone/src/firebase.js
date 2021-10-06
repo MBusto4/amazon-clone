@@ -1,5 +1,10 @@
-// import { initializeApp } from 'firebase/app';
-// import firebase from 'firebase'
+/*
+https://firebase.google.com/docs/web/setup
+*/
+
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
+import { getAuth, createUserWithEmailAndPassword, signInWithCredential } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -12,10 +17,15 @@ const firebaseConfig = {
     measurementId: "G-Q9TJRXWXPM"
 };
 
-// const firebaseApp = firebase.initializeApp(firebaseConfig)
-// // //database real time 
-// const db = firebaseApp.firestore()
-// // //authentification
-// const auth = firebase.auth()
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-// export { db, auth };
+const auth = getAuth();
+
+
+async function createAccount(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password)
+}
+
+
+export { db, app, createAccount };
