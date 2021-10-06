@@ -18,6 +18,14 @@ const reducer = (state, action) => {
                 cart: [...state.cart, action.item]
             };
         case 'REMOVE_FROM_CART':
+
+            // const itemId = action.itemId;
+            // const newArrayofItems = state.cart.filter(
+            //     (item) => item.id !== itemId
+            // );
+            // return { ...state, cart: newArrayofItems };
+
+            //BUG HERE NOT PROPERLY DELETING
             const index = state.cart.findIndex((cartItem) => cartItem.id === action.id
             )
             let newCart = [...state.cart];
