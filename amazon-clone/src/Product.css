@@ -11,6 +11,12 @@
     background-color: white;
     z-index: 1;
 }
+.product:hover {
+    border: 4px solid whitesmoke;
+    background-color: white;
+    opacity: 100%;
+}
+
 .product__rating{
     display: flex;
 
