@@ -31,4 +31,4 @@ async function createAccount(email, password) {
 }
 
 
-export { db, app, createAccount, signInWithAccount };
+export { db, app, createAccount, signInWithAccount, auth };

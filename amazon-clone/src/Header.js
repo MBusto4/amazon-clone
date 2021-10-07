@@ -15,7 +15,7 @@ function Header() {
        const [state, dispatch] = useStateValue();*/
 
 
-    const [{ cart }, dispatch] = useStateValue();
+    const [{ cart, user }, dispatch] = useStateValue();
 
 
     return (
@@ -37,10 +37,10 @@ function Header() {
                 <Link to='/login'>
                     <div className='header__option'>
                         <span className='header__option__lineOne'>
-                            Hello Guest
+                            Hello {user.email}
                         </span>
                         <span className='header__option__lineTwo'>
-                            Sign In
+                            {user ? 'Sign Out' : "Sign In"}
                         </span>
                     </div>
                 </Link>
