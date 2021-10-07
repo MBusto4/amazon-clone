@@ -11,11 +11,10 @@
     background-color: white;
     z-index: 1;
 }
-.product:hover {
+/* .product:hover {
     border: 2px solid darkgray;
     background-color: white;
-    opacity: 100%;
-}
+} */
 
 .product__rating{
     display: flex;
