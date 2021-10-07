@@ -1,14 +1,16 @@
+
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 // import { auth } from './firebase'
 
-import { createAccount } from './firebase'
+import { createAccount, signInWithAccount } from './firebase'
 
 import './Login.css'
 
 
 function Login() {
 
+    const history = useHistory()
 
     //React Hooks to keep track of state for the email and password for a user
     const [email, setEmail] = useState('')
@@ -17,14 +19,25 @@ function Login() {
     const signIn = e => {
         e.preventDefault()
         //some firebase login logic
+        signInWithAccount(email, password)
+            .then((auth) => {
+                history.push('/')
+            })
+            .catch(error => alert(error.message))
+
+
     }
     const register = e => {
         e.preventDefault()
 
         // some firebase register logic
         createAccount(email, password)
-            .then((response) => {
-                console.log("AUTH OBJ--->", response)
+            .then((auth) => {
+                //successfully created a new user and pass
+                if (auth) {
+                    history.push('/')
+                }
+                console.log("AUTH OBJ--->", auth)
             })
             .catch(error => alert(error.message))
     }
