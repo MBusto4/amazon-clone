@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Login from './Login';
 import { auth } from './firebase'
 import { useStateValue } from './StateProvider'
+import Footer from './Footer'
 
 
 // need to wrap out app with react router in order to route between multiple pages on our site
@@ -55,6 +56,7 @@ function App() {
           </Route>
 
         </Switch>
+        <Footer />
       </div>
     </Router>
 

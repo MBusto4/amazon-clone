@@ -67,6 +67,47 @@ function Home() {
 
                     />
                 </div>
+                <div className="home__row">
+                    <Product
+                        id='40321232'
+                        title='Theragun Prime Handheld Percussive Massage Device (Latest Model) with Travel Case - Black'
+                        price={299.99}
+                        image='https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6400/6400562_rd.jpg;maxHeight=640;maxWidth=550'
+                        rating={4}
+                    />
+                    <Product
+                        id='21178772'
+                        title='Echo Show 10 (3rd Gen) | HD smart display with motion and Alexa | Charcoal'
+                        price={249.99}
+                        image='https://m.media-amazon.com/images/I/51EVETDOOeL._AC_SL1000_.jpg'
+                        rating={3}
+                    />
+                    <Product
+                        id='91178732'
+                        title='Amazon Fire 4K TV Stick'
+                        price={33.99}
+                        image='https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQQUr_V2O6-SND3Z8QZcWGY2aFnn3SC0ztP9vk41nGltx8o3LA8bjqPFyqvzmpN0ZeUaBV3KtOz8F5iIx9SnbdrfbE0iFtS8WROK2NvYgES3v1wzWBNAw4RSb4&usqp=CAE'
+                        rating={5}
+                    />
+                </div>
+
+
+                <div className="home__row">
+                    <Product
+                        id='44422892'
+                        title='All-new Amazon Echo Buds (2nd Gen) | Wireless earbuds with premium sound and active noise cancellation | Black'
+                        price={119.99}
+                        image='https://m.media-amazon.com/images/I/41xQKlqYxNL._AC_SL1000_.jpg'
+                        rating={4}
+                    />
+                    <Product
+                        id='21445492'
+                        title='Apple - 27" iMac® with Retina 5K display - Intel Core i5 (3.1GHz) - 8GB Memory - 256GB SSD - Silver'
+                        price={1799.99}
+                        image='https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5721/5721940_sd.jpg'
+                        rating={5}
+                    />
+                </div>
             </div>
         </div>
     )
