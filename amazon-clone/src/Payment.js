@@ -6,7 +6,7 @@ import './Payment.css'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CurrencyFormat from 'react-currency-format'
 import { getCartTotal } from './reducer';
-import axios from 'axios'
+import axios from './axios'
 
 function Payment() {
     const [{ user, cart, dispatch }] = useStateValue()
