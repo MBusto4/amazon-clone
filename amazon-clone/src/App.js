@@ -11,6 +11,13 @@ import { auth } from './firebase'
 import { useStateValue } from './StateProvider'
 import Footer from './Footer'
 import Payment from './Payment'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+
+//loads stripe up and stores it into a promise
+const promise = loadStripe(
+  'pk_test_51JiPnGA9KroOqEE2ZByc8BEOlGZosLNyaTHtKI5UEVASNPFnj7tIhrKvHHOYd2alQ726NdaFdnx4aOnc9PuhFzFj00S1WxUnRi'
+)
 
 
 // need to wrap out app with react router in order to route between multiple pages on our site
@@ -55,7 +62,9 @@ function App() {
           <Route path='/payment'>
             <Header />
             {/* <h1>I AM PAYMENT PAGE</h1> */}
-            <Payment />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
           {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE has to be at the bottom*/}
           <Route path='/'>
