@@ -53,7 +53,7 @@ function App() {
           </Route>
           <Route path='/payment'>
             <Header />
-            <h1>I AM PAYMENT PAGE</h1>
+            {/* <h1>I AM PAYMENT PAGE</h1> */}
             <Payment />
           </Route>
           {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE has to be at the bottom*/}
