@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStateValue } from './StateProvider'
 import CartItem from './CartItem'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import './Payment.css'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CurrencyFormat from 'react-currency-format'
 import { getCartTotal } from './reducer';
+import axios from 'axios'
 
 function Payment() {
     const [{ user, cart, dispatch }] = useStateValue()
@@ -14,20 +15,40 @@ function Payment() {
     const stripe = useStripe()
     const elements = useElements()
 
-    //need 2 pieces of state for the handleSubmit and handleChange functions
+    //need pieces of state for the handleSubmit and handleChange functions
     const [error, setError] = useState(null)
-    const [disable, setDisable] = useState(true)
+    const [disabled, setDisable] = useState(true)
+    const [succeeded, setSucceeded] = useState(false)
+    const [processing, setProcessing] = useState('')
+    const [clientSecret, setClientSecret] = useState(true)
+
+    useEffect(() => {
+        //generate the special stripe secret which allows us to charge a customer
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                url: `/payment/create?total=${getCartTotal(cart)}`
+            })
+        }
+        getClientSecret()
+
+    }, [cart])
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (event) => {
         //do all the stripe logic
+        event.preventDefault()
+        setProcessing(true)
+
+        //need a client secret 
+
     }
 
-    const handleChange = (e) => {
+    const handleChange = (event) => {
         /* Listen for any changes in the CardElement
            and display any errors as the customer types their card details */
-        setDisable(e.empty)
-        setError(e.error ? e.error.message : '')
+        setDisable(event.empty)
+        setError(event.error ? event.error.message : '')
     }
 
 
@@ -96,7 +117,11 @@ function Payment() {
                                     thousandSeparator={true}
                                     prefix={'$'}
                                 />
+                                <button disabled={processing || disabled || succeeded}>
+                                    <span>{processing ? <p>Procesing...</p> : "Buy Now"}</span>
+                                </button>
                             </div>
+                            {error && <div>{error}</div>}
                         </form>
                     </div>
                 </div>
