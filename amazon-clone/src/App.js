@@ -59,7 +59,7 @@ function App() {
             <Header />
             <Checkout />
           </Route>
-          <Route path='/payment'>
+          <Route path='/payments'>
             <Header />
             {/* <h1>I AM PAYMENT PAGE</h1> */}
             <Elements stripe={promise}>

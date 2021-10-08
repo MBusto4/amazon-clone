@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: '...' //this is where the API (Firebase Cloud Functions)url goes
+    //this is where the API (Firebase Cloud Functions)url goes
+    baseURL: "http://localhost:5001/clone-e2b31/us-central1/api"
 })
 
 
