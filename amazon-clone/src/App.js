@@ -46,6 +46,7 @@ function App() {
 
           <Route path='/login'>
             <Login />
+            <Footer />
           </Route>
           <Route path='/checkout'>
             <Header />
@@ -60,12 +61,13 @@ function App() {
           <Route path='/'>
             <Header />
             <Home />
+            <Footer />
           </Route>
 
         </Switch>
-        <Footer />
       </div>
     </Router>
+
 
   );
 }

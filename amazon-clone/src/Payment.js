@@ -1,12 +1,19 @@
 import React from 'react'
 import { useStateValue } from './StateProvider'
 import CartItem from './CartItem'
+import { Link } from 'react-router-dom'
+import './Payment.css'
 
 function Payment() {
     const [{ user, cart, dispatch }] = useStateValue()
     return (
         <div className='payment'>
             <div className="payment__container">
+                <h1>
+                    Checkout (
+                    <Link to='/checkout'>{cart.length} items</Link>
+                    )
+                </h1>
                 {/*Payment Section - Delivery Address */}
                 <div className="payment__section">
                     <div className="payment__title">
@@ -18,8 +25,6 @@ function Payment() {
                         <p>New Jersey, NJ</p>
                     </div>
                 </div>
-
-
                 {/*Payment Section - Review Items */}
                 <div className="payment__section">
                     <div className="payment__title">
@@ -40,11 +45,13 @@ function Payment() {
                         }
                     </div>
                 </div>
-
-
-
                 {/*Payment Section - Payment Method */}
-                <div className="payment__section"></div>
+                <div className="payment__section">
+                    <div className="payment__details">
+                        {/* STRIPE LOGIC GOES HERE */}
+                        <h3>Payment Method</h3>
+                    </div>
+                </div>
 
             </div>
 
