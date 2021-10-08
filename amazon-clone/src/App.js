@@ -10,6 +10,7 @@ import Login from './Login';
 import { auth } from './firebase'
 import { useStateValue } from './StateProvider'
 import Footer from './Footer'
+import Payment from './Payment'
 
 
 // need to wrap out app with react router in order to route between multiple pages on our site
@@ -38,27 +39,35 @@ function App() {
   }, [])
 
   return (
+    //if there is no route that matches the ones below it auto goes to '/'
     <Router>
       <div className="App">
         <Switch>
 
           <Route path='/login'>
             <Login />
+            <Footer />
           </Route>
           <Route path='/checkout'>
             <Header />
             <Checkout />
           </Route>
+          <Route path='/payment'>
+            <Header />
+            {/* <h1>I AM PAYMENT PAGE</h1> */}
+            <Payment />
+          </Route>
           {/* WHEN WE ARE AT THIS PATH RENDER THESE COMPONENTS - DEFAULT ROUTE has to be at the bottom*/}
           <Route path='/'>
             <Header />
             <Home />
+            <Footer />
           </Route>
 
         </Switch>
-        <Footer />
       </div>
     </Router>
+
 
   );
 }
