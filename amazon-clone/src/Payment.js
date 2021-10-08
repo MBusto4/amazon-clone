@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useStateValue } from './StateProvider'
 import CartItem from './CartItem'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Payment.css'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CurrencyFormat from 'react-currency-format'
@@ -10,6 +10,7 @@ import axios from 'axios'
 
 function Payment() {
     const [{ user, cart, dispatch }] = useStateValue()
+    const history = useHistory()
 
     //Hooks to use stripe functions
     const stripe = useStripe()
@@ -20,20 +21,26 @@ function Payment() {
     const [disabled, setDisable] = useState(true)
     const [succeeded, setSucceeded] = useState(false)
     const [processing, setProcessing] = useState('')
+    //clientSecret is so Stripe knows how much to charge the client
     const [clientSecret, setClientSecret] = useState(true)
 
     useEffect(() => {
         //generate the special stripe secret which allows us to charge a customer
+
+        /********************** 
+        when ever the basket changes it will make a post request and will update the special client secret and will
+        charge the right amount 
+        */
         const getClientSecret = async () => {
             const response = await axios({
                 method: 'post',
-                url: `/payment/create?total=${getCartTotal(cart)}`
+                //Stripe expects the total in a currencies subunits so need to multiple by 100(dollars to cents)
+                url: `/payment/create?total=${getCartTotal(cart) * 100}`
             })
+            setClientSecret(response.data.clientSecret)
         }
         getClientSecret()
-
     }, [cart])
-
 
     const handleSubmit = async (event) => {
         //do all the stripe logic
@@ -41,7 +48,19 @@ function Payment() {
         setProcessing(true)
 
         //need a client secret 
+        //uses the client secret
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({ paymentIntent }) => {
+            setSucceeded(true)
+            setError(null)
+            setProcessing(false)
+            history.replace('/orders')
 
+        })
+        //paymentInten = payment confirmation
     }
 
     const handleChange = (event) => {
@@ -50,9 +69,6 @@ function Payment() {
         setDisable(event.empty)
         setError(event.error ? event.error.message : '')
     }
-
-
-
 
     return (
         <div className='payment'>
@@ -125,9 +141,7 @@ function Payment() {
                         </form>
                     </div>
                 </div>
-
             </div >
-
         </div >
     )
 }
