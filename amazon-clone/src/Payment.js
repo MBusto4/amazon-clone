@@ -8,8 +8,10 @@ import CurrencyFormat from 'react-currency-format'
 import { getCartTotal } from './reducer';
 import axios from './axios'
 
+import { db, auth } from './firebase'
+
 function Payment() {
-    const [{ user, cart, dispatch }] = useStateValue()
+    const [{ user, cart }, dispatch] = useStateValue()
     const history = useHistory()
 
     //Hooks to use stripe functions
@@ -57,11 +59,25 @@ function Payment() {
             }
         }).then(({ paymentIntent }) => {
             //paymentIntent = payment confirmation
+
+            //push into the database
+            db.collection('users')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    cart: cart,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
+                })
             setSucceeded(true)
             setError(null)
             setProcessing(false)
-            history.replace('/orders')
 
+            dispatch({
+                type: 'EMPTY_CART',
+            });
+            history.replace('/orders')
         })
     }
 

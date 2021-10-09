@@ -13,6 +13,7 @@ import Footer from './Footer'
 import Payment from './Payment'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import Orders from './Orders'
 
 //loads stripe up and stores it into a promise
 const promise = loadStripe(
@@ -54,6 +55,10 @@ function App() {
           <Route path='/login'>
             <Login />
             <Footer />
+          </Route>
+          <Route path='/orders'>
+            <Header />
+            <Orders />
           </Route>
           <Route path='/checkout'>
             <Header />
