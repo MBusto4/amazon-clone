@@ -39,7 +39,7 @@ function Payment() {
             })
             setClientSecret(response.data.clientSecret)
         }
-        getClientSecret()
+        getClientSecret();
     }, [cart])
 
     console.log("THE SECRET IS ---->", clientSecret)
@@ -56,13 +56,13 @@ function Payment() {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
+            //paymentIntent = payment confirmation
             setSucceeded(true)
             setError(null)
             setProcessing(false)
             history.replace('/orders')
 
         })
-        //paymentIntent = payment confirmation
     }
 
     const handleChange = (event) => {
@@ -139,6 +139,7 @@ function Payment() {
                                     <span>{processing ? <p>Procesing...</p> : "Buy Now"}</span>
                                 </button>
                             </div>
+                            {/* For Errors */}
                             {error && <div>{error}</div>}
                         </form>
                     </div>
