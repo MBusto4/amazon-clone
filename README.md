@@ -14,14 +14,15 @@ amazon clone powered by React and Firebase with FULL E-Commerce Functionality
 
 ## Features to Try!
 
-- Sign into OuterView with your Google account
-- Record yourself talking and see a live transcription
-- Render Face Points and make some funny faces
-- Emotions trained into machine learning model
-  - _Happy, Sad, Surprised, Anger, Fearful, Disgusted, Neutral_
-- Say lots of filler words such as 'like', 'totally' and 'basically'
-- Try different emotions with varying amounts of filler words to see the scoring algorithm work
-- See your previous recordings in the All Recordings page
+- Sign Up/In into Amazon clone
+- When redirected back to the home page, start adding products to your cart
+- In the top right corner you can see the cart number incrementing as you add products
+- Once done adding products to your cart, click on the cart in the top right
+- Inside the cart, you can remove items if you do not wish to purchase
+- Click proceed to checkout if you are satisfied with the products in your cart
+- Once at the checkout page use Stripe's dummy card to purchase your items
+-Your orders will be in the Orders section
+
 
 ## Technologies
 
@@ -36,10 +37,6 @@ amazon clone powered by React and Firebase with FULL E-Commerce Functionality
   - react-currency-format
   - stripe
    
-## Future Roadmap
-
-
-
 ## Installation
 
 - To install all dependencies: `npm install`
